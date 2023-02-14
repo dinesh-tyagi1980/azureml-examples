@@ -26,6 +26,10 @@ jobs:
     steps:
     - name: check out repo
       uses: actions/checkout@v2
+    - name: Set up Azure CLI
+      uses: azure/setup-azure-cli@v1
+      with:
+        subscription: 19a7ed62-f51f-4e53-b3ea-6ba9a63f17fe
     - name: azure login
       uses: azure/login@v1
       with:
