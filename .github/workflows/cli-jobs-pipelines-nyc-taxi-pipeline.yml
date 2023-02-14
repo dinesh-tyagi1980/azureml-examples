@@ -30,12 +30,16 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{secrets.AZUREML_CREDENTIALS}}
+    - name: print credentials
+      run: echo "Azure credentials successfully loaded"
     - name: bootstrap resources
       run: |
           echo '${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}';
           bash bootstrap.sh
       working-directory: infra
       continue-on-error: false
+    - name: print bootstrap message
+      run: echo "Bootstrap completed successfully"
     - name: setup-cli
       run: |
           source "${{ github.workspace }}/infra/sdk_helpers.sh";
@@ -43,6 +47,8 @@ jobs:
           bash setup.sh
       working-directory: cli
       continue-on-error: true
+    - name: print setup message
+      run: echo "CLI setup completed successfully"
     - name: run job
       run: |
           source "${{ github.workspace }}/infra/sdk_helpers.sh";
