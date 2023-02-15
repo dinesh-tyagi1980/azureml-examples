@@ -31,6 +31,10 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         enable-AzPSSession: true
+    - uses: azure/powershell@v1
+      with:
+        inlineScript: "Get-AzContext"
+        azPSVersion: "latest"
     - name: print credentials
       run: echo "Azure credentials successfully loaded"
     - name: bootstrap resources
