@@ -79,9 +79,9 @@ az account set -s "${SUBSCRIPTION_ID}" || exit 1
 # RUN_BOOTSTRAP=1
 if [[ ! -z "${RUN_BOOTSTRAP:-}" ]]; then
 
-    echo_title "Ensuring Resource group"
+    echo_title "rg-MLOps-kcl-eastus-001"
     "$SCRIPT_DIR"/sdk_helpers.sh ensure_resourcegroup
-    echo_title "Ensuring Workspace"
+    echo_title "azure-mlops"
     "$SCRIPT_DIR"/sdk_helpers.sh ensure_ml_workspace "${WORKSPACE_NAME}"
     "$SCRIPT_DIR"/sdk_helpers.sh ensure_ml_workspace "mlw-mevnet"
     "$SCRIPT_DIR"/sdk_helpers.sh ensure_vnet "vnet-mevnet"
