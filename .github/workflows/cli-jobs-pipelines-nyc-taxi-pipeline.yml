@@ -26,10 +26,11 @@ jobs:
     steps:
     - name: check out repo
       uses: actions/checkout@v2
-    - name: azure login
+    - name: 'Azure PowerShell login with subscription'
       uses: azure/login@v1
       with:
-        creds: ${{secrets.AZUREML_CREDENTIALS}}
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        enable-AzPSSession: true
     - name: print credentials
       run: echo "Azure credentials successfully loaded"
     - name: bootstrap resources
